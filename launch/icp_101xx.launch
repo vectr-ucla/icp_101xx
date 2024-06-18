@@ -1,0 +1,10 @@
+<launch>
+  <arg name="robot_namespace"/>
+	<node ns="$(arg robot_namespace)" name="icp_101xx" pkg="icp_101xx" type="icp_101xx_node" output="screen" clear_params="true">
+		<!-- Load drone parameters -->
+		<rosparam file="$(find icp_101xx)/cfg/params.yaml" command="load"/>
+
+	  <!-- Publications -->
+	  <remap from="~barometer" to="barometer"/>
+	</node>	
+</launch>
