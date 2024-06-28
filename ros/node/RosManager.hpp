@@ -8,7 +8,7 @@
 
 #include <icp_101xx/Barometer.h>
 
-#include "libserial/serial.h"
+#include "serial.h"
 
 #pragma once
 #include "pktStructs.h"

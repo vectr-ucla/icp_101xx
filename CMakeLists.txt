@@ -5,7 +5,6 @@ find_package(catkin
   REQUIRED COMPONENTS 
   roscpp
   std_msgs
-  libserial
   message_generation
 )
 
@@ -37,6 +36,6 @@ include_directories(
 add_definitions(-std=c++11)
 
 # Declare a C++ executable
-add_executable(icp_101xx_node ros/node/main.cc ros/node/RosManager.cc)
+add_executable(icp_101xx_node ros/node/main.cc ros/node/RosManager.cc ros/node/serial.cc)
 add_dependencies(icp_101xx_node ${catkin_EXPORTED_TARGETS})
 target_link_libraries(icp_101xx_node ${catkin_LIBRARIES})
