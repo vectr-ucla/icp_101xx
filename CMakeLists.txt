@@ -5,27 +5,17 @@ find_package(catkin
   REQUIRED COMPONENTS 
   roscpp
   std_msgs
-  message_generation
+  sensor_msgs
 )
 
-## Declare ROS messages, services and actions
-add_message_files(
-  FILES
-    Barometer.msg
-)
-
-generate_messages(
-  DEPENDENCIES
-  std_msgs
-)
 
 catkin_package(
   INCLUDE_DIRS src 
   LIBRARIES icp_101xx
   CATKIN_DEPENDS 
     roscpp
-    message_runtime
     std_msgs
+    sensor_msgs
 )
 
 include_directories(

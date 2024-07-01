@@ -18,7 +18,8 @@ RosManager::RosNode::RosNode(ros::NodeHandle node_handle) : nh(node_handle) {
   int baud_rate;
   ros::param::param<int>("~baud_rate", baud_rate, 9600);
 
-  this->baro_pub = this->nh.advertise<icp_101xx::Barometer>("barometer", 1);
+  this->baro_pub =
+      this->nh.advertise<sensor_msgs::FluidPressure>("pressure", 1);
 
   this->abort_timer = this->nh.createTimer(ros::Duration(0.01),
                                            &RosManager::RosNode::TimerCB, this);
@@ -100,11 +101,10 @@ void RosManager::RosNode::SerialThreadMain() {
 }
 
 void RosManager::RosNode::PublishBaroPkt(const vectr::baroPkt baro_pkt) {
-  icp_101xx::Barometer baro;
+  sensor_msgs::FluidPressure baro;
 
   baro.header.stamp = ros::Time::now();
-  baro.temperature = baro_pkt.temp;
-  baro.pressure = baro_pkt.pres / 1000.;
+  baro.fluid_pressure = baro_pkt.pres / 1000.;
 
   this->baro_pub.publish(baro);
 }

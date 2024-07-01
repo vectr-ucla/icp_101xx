@@ -6,7 +6,7 @@
 
 #include <ros/ros.h>
 
-#include <icp_101xx/Barometer.h>
+#include <sensor_msgs/FluidPressure.h>
 
 #include "serial.h"
 
